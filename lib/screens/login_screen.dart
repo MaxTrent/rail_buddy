@@ -6,26 +6,24 @@ import '../railBuddyButton.dart';
 import '../railBuddyTextFormField.dart';
 import 'forgot_password.dart';
 import 'homepage.dart';
-// import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:train_app/constraints.dart';
-// import 'package:train_app/RailBuddyTheme.dart';
-// import '../railBuddyButton.dart';
-// import '../railBuddyTextFormField.dart';
-// import 'forgot_password.dart';
-// import 'homepage.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../railBuddyButton.dart';
+import '../railBuddyTextFormField.dart';
+import 'forgot_password.dart';
+import 'homepage.dart';
 
-// class LoginScreen extends StatefulWidget {
-//   static const String id = 'login-screen';
+class LoginScreen extends StatefulWidget {
+  static const String id = 'login-screen';
 
-//   @override
-//   State<LoginScreen> createState() => _LoginScreenState();
-// }
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
 
-// class _LoginScreenState extends State<LoginScreen> {
-//   var usernameController = TextEditingController();
-//   var passwordController = TextEditingController();
+class _LoginScreenState extends State<LoginScreen> {
+  var usernameController = TextEditingController();
+  var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

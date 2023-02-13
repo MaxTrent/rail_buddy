@@ -4,9 +4,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:train_app/screens/forgot_password.dart';
 import 'package:train_app/screens/homepage.dart';
 import 'package:train_app/screens/login_screen.dart';
+import 'package:train_app/screens/sign_up_screen.dart';
 import 'package:train_app/theme/railBuddyTheme.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+// ...
 
-void main() {
+
+
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -31,6 +40,7 @@ class MyApp extends StatelessWidget {
           LoginScreen.id: (context) => LoginScreen(),
           ForgotPassword.id: (context) => ForgotPassword(),
           HomePage.id: (context) => HomePage(),
+          RegisterScreen.id: (context) => RegisterScreen(),
         },
 
       ),

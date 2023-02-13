@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:train_app/screens/sign_in_screen.dart';
+import 'package:train_app/theme/constraints.dart';
 
 import '../railBuddyButton.dart';
 import '../railBuddyTextFormField.dart';
@@ -88,8 +89,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 child: RailBuddyTextFormField(
                                   controller: usernameController,
                                   hintText: 'FullName',
-                                  borderSide: BorderSide.none,
-                                  keyboardType: TextInputType.emailAddress,
+                                  borderSide: BorderSide.none, fillColor: fColorGrey,
+                                  // keyboardType: TextInputType.emailAddress,
                                 ),
                               ),
                             ],
@@ -116,11 +117,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   height: 50.h,
                                   width: 300.w,
                                   child: RailBuddyTextFormField(
-                                    obscure: true,
+                                    // obscure: true,
                                     controller: passwordController,
                                     hintText: 'Email address ...',
-                                    borderSide: BorderSide.none,
-                                    keyboardType: TextInputType.emailAddress,
+                                    borderSide: BorderSide.none, fillColor: fColorGrey,
+                                    // keyboardType: TextInputType.emailAddress,
                                   )),
                             ],
                           ),
@@ -146,11 +147,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   height: 50.h,
                                   width: 300.w,
                                   child: RailBuddyTextFormField(
-                                    obscure: true,
+                                    // obscure: true,
                                     controller: passwordController,
                                     hintText: 'Password',
-                                    borderSide: BorderSide.none,
-                                    keyboardType: TextInputType.emailAddress,
+                                    borderSide: BorderSide.none, fillColor: fColorGrey,
+                                    // keyboardType: TextInputType.emailAddress,
                                   )),
                             ],
                           ),
@@ -230,7 +231,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     builder: ((context) => AdminProfilePage()),
                                   ),
                                 );
-                              },
+                              }, color: bColorWhite, backgroundColor: fColorBlue,
                             ),
                           ),
                           SizedBox(height: 15.h),

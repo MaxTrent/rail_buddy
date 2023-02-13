@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:google_fonts/google_fonts.dart';
+
+import 'package:google_fonts/google_fonts.dart';
 import 'package:train_app/railBuddyButton.dart';
 import 'package:train_app/railBuddyTextFormField.dart';
+import 'package:train_app/theme/constraints.dart';
 
 import 'forgot_password.dart';
 import 'sign_up_screen.dart';
@@ -87,7 +89,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: RailBuddyTextFormField(
                                   controller: usernameController,
                                   hintText: 'Email address..',
-                                  borderSide: BorderSide.none, keyboardType: TextInputType.emailAddress,
+                                  borderSide: BorderSide.none,
+                                  fillColor: fColorGrey,
+                                  // keyboardType: TextInputType.emailAddress,
                                 ),
                               ),
                             ],
@@ -114,10 +118,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                   height: 50.h,
                                   width: 300.w,
                                   child: RailBuddyTextFormField(
-                                    obscure: true,
+                                    // obscure: true,
                                     controller: passwordController,
                                     hintText: 'Password',
-                                    borderSide: BorderSide.none, keyboardType: TextInputType.emailAddress,
+                                    borderSide: BorderSide.none,
+                                    fillColor: fColorGrey,
+                                    // keyboardType: TextInputType.emailAddress,
                                   )),
                             ],
                           ),
@@ -149,7 +155,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               SizedBox(
                                   height: 50.h,
                                   width: 300.w,
-                                  child: RailBuddyButton(text: 'Login', onPressed: Navigator.of(context).pop,)),
+                                  child: RailBuddyButton(
+                                    text: 'Login',
+                                    onPressed: Navigator.of(context).pop,
+                                    color: bColorWhite,
+                                    backgroundColor: fColorBlue,
+                                  )),
                             ],
                           ),
                           SizedBox(height: 15.h),
@@ -168,24 +179,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                   // ),
                                   ),
                               TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                        builder: ((context) =>
-                                            RegisterScreen()),
-                                      ),
-                                    );
-                                  },
-                                  child: Text('Sign Up',
-                                      style:
-                                          // GoogleFonts.nunito(
-                                          TextStyle(
-                                        color: Colors.blue.shade700,
-                                        fontSize: 20.sp,
-                                        fontWeight: FontWeight.w600,
-                                      )
-                                      // ),
-                                      )),
+                                onPressed: () {
+                                  Navigator.of(context).pushReplacementNamed(RegisterScreen.id);
+                                },
+                                child: Text('Sign Up',
+                                    style:
+                                        Theme.of(context).textTheme.headline1),
+                                // ),
+                              ),
                             ],
                           ),
                         ],

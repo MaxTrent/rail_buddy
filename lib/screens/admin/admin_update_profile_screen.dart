@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:train_app/screens/admin/admin_profile.dart';
 
 import '../../railBuddyTextFormField.dart';
+import '../../theme/constraints.dart';
 
 class AdminUpdateProfileScreen extends StatefulWidget {
   static const String id = 'admin-update-profile';
@@ -116,11 +117,11 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                         height: 50.h,
                         width: 300.w,
                         child: RailBuddyTextFormField(
-                          obscure: true,
+                          // obscure: true,
                           controller: nameController,
                           hintText: 'John Rice',
-                          borderSide: BorderSide.none,
-                          keyboardType: TextInputType.emailAddress,
+                          borderSide: BorderSide.none, fillColor: bColorWhite,
+                          // keyboardType: TextInputType.emailAddress,
                         )),
                     SizedBox(
                       height: 5.h,
@@ -147,7 +148,8 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                               controller: emailController,
                               hintText: 'johnrice@gmail.com',
                               borderSide: BorderSide.none,
-                              keyboardType: TextInputType.emailAddress,
+                              // keyboardType: TextInputType.emailAddress,
+                              fillColor: bColorWhite,
                             )),
                       ],
                     ),
