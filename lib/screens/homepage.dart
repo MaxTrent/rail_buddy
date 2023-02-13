@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:train_app/screens/admin/admin_profile.dart';
 import 'package:train_app/theme/railBuddyTheme.dart';
 
 import '../theme/constraints.dart';
@@ -25,8 +26,8 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsets.only(top: 12.0.h, left: 12.0.w, right: 12.0.w),
+                    padding: EdgeInsets.only(
+                        top: 12.0.h, left: 12.0.w, right: 12.0.w),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -41,7 +42,12 @@ class _HomePageState extends State<HomePage> {
                           backgroundColor: fColorGrey,
                           radius: 20.r,
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                               Navigator.of(context).pushReplacement(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const AdminProfilePage()),);
+                            },
                             icon: Icon(
                               Icons.person,
                               size: 20.sp,
@@ -69,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Container(
-                      padding: EdgeInsets.all(12.0),
+                      padding: const EdgeInsets.all(12.0),
                       height: 100.h,
                       width: 400.w,
                       child: Column(
@@ -111,14 +117,14 @@ class _HomePageState extends State<HomePage> {
                           )
                         ],
                       ),
-                      decoration: BoxDecoration(color: fColorBlue),
+                      decoration: const BoxDecoration(color: fColorBlue),
                     ),
                   ),
                   Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 12.0.w, vertical: 0.0.w),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 12.0.w, vertical: 0.0.w),
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(
+                      padding: const EdgeInsets.fromLTRB(
                         12.0,
                         12.0,
                         12.0,
@@ -148,7 +154,8 @@ class _HomePageState extends State<HomePage> {
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline1!
-                                    .copyWith(color: fColorBlue, fontSize: 33.sp),
+                                    .copyWith(
+                                        color: fColorBlue, fontSize: 33.sp),
                               ),
                               Icon(
                                 Icons.arrow_forward_rounded,
@@ -160,7 +167,8 @@ class _HomePageState extends State<HomePage> {
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline1!
-                                    .copyWith(color: fColorBlue, fontSize: 33.sp),
+                                    .copyWith(
+                                        color: fColorBlue, fontSize: 33.sp),
                               ),
                             ],
                           ),
@@ -175,7 +183,7 @@ class _HomePageState extends State<HomePage> {
                     child: Container(
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width,
-                      padding: EdgeInsets.all(12.0),
+                      padding: const EdgeInsets.all(12.0),
                       decoration: BoxDecoration(
                           color: bColorGrey,
                           borderRadius: BorderRadius.only(
@@ -190,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                               Container(
                                 height: 40.h,
                                 width: 100.w,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: fColorBlue,
                                 ),
                                 child: Center(
@@ -246,7 +254,7 @@ class _HomePageState extends State<HomePage> {
                             height: 20.h,
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 12.0),
+                            padding: const EdgeInsets.only(left: 12.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -259,14 +267,16 @@ class _HomePageState extends State<HomePage> {
                                   // ),
                                   height: 80.h,
                                   width: 150.w,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: fColorGrey,
                                   ),
                                   child: Padding(
                                     padding: EdgeInsets.only(left: 8.0.w),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'FROM',
@@ -298,14 +308,16 @@ class _HomePageState extends State<HomePage> {
                                   // ),
                                   height: 80.h,
                                   width: 150.w,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: fColorGrey,
                                   ),
                                   child: Padding(
                                     padding: EdgeInsets.only(left: 8.0.w),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'TO',
@@ -320,9 +332,9 @@ class _HomePageState extends State<HomePage> {
                                               .textTheme
                                               .headline1!
                                               .copyWith(
-                                              color: Colors.black,
-                                              fontSize: 20.sp,
-                                              fontWeight: FontWeight.w700),
+                                                  color: Colors.black,
+                                                  fontSize: 20.sp,
+                                                  fontWeight: FontWeight.w700),
                                         ),
                                       ],
                                     ),
@@ -331,9 +343,11 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 20.h,),
+                          SizedBox(
+                            height: 20.h,
+                          ),
                           Padding(
-                            padding: EdgeInsets.only(left: 12.0),
+                            padding: const EdgeInsets.only(left: 12.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -346,14 +360,16 @@ class _HomePageState extends State<HomePage> {
                                   // ),
                                   height: 80.h,
                                   width: 150.w,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: fColorGrey,
                                   ),
                                   child: Padding(
                                     padding: EdgeInsets.only(left: 8.0.w),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'DEPARTURE',
@@ -368,8 +384,8 @@ class _HomePageState extends State<HomePage> {
                                               .textTheme
                                               .headline1!
                                               .copyWith(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w700),
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.w700),
                                         ),
                                       ],
                                     ),
@@ -384,14 +400,16 @@ class _HomePageState extends State<HomePage> {
                                   // ),
                                   height: 80.h,
                                   width: 150.w,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: fColorGrey,
                                   ),
                                   child: Padding(
                                     padding: EdgeInsets.only(left: 8.0.w),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'TO',
@@ -406,9 +424,9 @@ class _HomePageState extends State<HomePage> {
                                               .textTheme
                                               .headline1!
                                               .copyWith(
-                                              color: Colors.black,
-                                              fontSize: 20.sp,
-                                              fontWeight: FontWeight.w700),
+                                                  color: Colors.black,
+                                                  fontSize: 20.sp,
+                                                  fontWeight: FontWeight.w700),
                                         ),
                                       ],
                                     ),
@@ -416,10 +434,10 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ],
                             ),
-
                           ),
-
-                          SizedBox(height: 10.h,),
+                          SizedBox(
+                            height: 10.h,
+                          ),
                         ],
                       ),
                     ),

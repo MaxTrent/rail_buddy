@@ -6,6 +6,7 @@ import 'package:train_app/railBuddyTextFormField.dart';
 import 'package:train_app/screens/admin/admin_profile.dart';
 
 import 'forgot_password.dart';
+import 'homepage.dart';
 import 'sign_up_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -176,7 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           Navigator.of(context).pushReplacement(
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      AdminProfilePage()));
+                                                      HomePage()),);
                                         })),
                               ],
                             ),

@@ -24,6 +24,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
   late DateTime selectedDate = DateTime.now();
   final _minimumDate = DateTime(1930, 1, 1);
   final _maximumDate = DateTime.now();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +70,19 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                 Padding(
                   padding: const EdgeInsets.all(2.0),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
+                        // Save the updated profile information to your database
+                        // For example, using Firebase:
+                        // FirebaseFirestore.instance.collection('users').doc(user.uid).update({
+                        //   'name': _name,
+                        //   'email': _email,
+                        // });
+                        Navigator.pop(context);
+                      }
+                      
+                    },
                     child: const Text(
                       'Save',
                       style: TextStyle(
@@ -84,307 +97,312 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
           ),
         ),
         body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 89,
-                ),
-                child: Container(
-                  height: 250,
-                  width: 190,
-                  child: Image.asset(
-                    'assets/images/avatar.png',
-                    fit: BoxFit.fill,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 89,
+                  ),
+                  child: Container(
+                    height: 250,
+                    width: 190,
+                    child: Image.asset(
+                      'assets/images/avatar.png',
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 22.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: Text('Name',
-                          style:
-                              // GoogleFonts.nunito(
-                              TextStyle(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w600,
-                          )
-                          // ),
-                          ),
-                    ),
-                    SizedBox(
-                        height: 50.h,
-                        width: 320.w,
-                        child: RailBuddyTextFormField(
-                          obscure: true,
-                          controller: nameController,
-                          hintText: 'John Rice',
-                          borderSide: BorderSide.none,
-                          keyboardType: TextInputType.emailAddress,
-                        )),
-                    SizedBox(
-                      height: 1.h,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Text('Email',
-                              style:
-                                  // GoogleFonts.nunito(
-                                  TextStyle(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                              )
-                              // ),
-                              ),
-                        ),
-                        SizedBox(
-                          height: 50.h,
-                          width: 320.w,
-                          child: RailBuddyTextFormField(
-                            controller: emailController,
-                            hintText: 'johnrice@gmail.com',
-                            borderSide: BorderSide.none,
-                            keyboardType: TextInputType.emailAddress,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Text('Birth Date',
-                              style:
-                                  // GoogleFonts.nunito(
-                                  TextStyle(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                              )
-                              // ),
-                              ),
-                        ),
-                        SizedBox(
-                          height: 50.h,
-                          width: 320.w,
-                          child: TextField(
-                            decoration: InputDecoration(
-                              // suffixIcon: suffixIcon,
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(16, 0, 0, 0),
-                              //hintText: hintText,
-                              fillColor: Colors.grey.shade300,
-                              filled: true,
-                              hintText: 'Birth Date',
-                              errorStyle:
-                                  const TextStyle(height: 0, color: Colors.red),
-                              hintStyle: TextStyle(
-                                fontSize: 16.sp,
-                                color: const Color(0xFF969A9D),
-                                fontWeight: FontWeight.w500,
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.r),
-                                borderSide: BorderSide.none,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.r),
-                                borderSide: BorderSide.none,
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.r),
-                                borderSide: BorderSide.none,
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.r),
-                                borderSide: BorderSide.none,
-                              ),
-                            ),
-                            style: const TextStyle(
-                              fontSize: 16,
-                              color: const Color(0xFF969A9D),
-                            ),
-                            onTap: () async {
-                              final date = await showDatePicker(
-                                context: context,
-                                initialDate: selectedDate ?? _maximumDate,
-                                firstDate: _minimumDate,
-                                lastDate: _maximumDate,
-                              );
-                              if (date != null) {
-                                setState(() {
-                                  selectedDate = date;
-                                });
-                              }
-                            },
-                            onChanged: (value) {
-                              setState(() {
-                                selectedDate =
-                                    DateFormat('yyyy-MM-dd').parse(value);
-                              });
-                            },
-                            controller: TextEditingController(
-                                text: selectedDate == null
-                                    ? ''
-                                    : DateFormat('yyyy-MM-dd')
-                                        .format(selectedDate)),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Text(
-                            'Phone Number',
+                Padding(
+                  padding: const EdgeInsets.only(left: 22.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: Text('Name',
                             style:
                                 // GoogleFonts.nunito(
                                 TextStyle(
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
-                            ),
+                            )
                             // ),
-                          ),
-                        ),
-                        SizedBox(
+                            ),
+                      ),
+                      SizedBox(
                           height: 50.h,
                           width: 320.w,
                           child: RailBuddyTextFormField(
-                            keyboardType: const TextInputType.numberWithOptions(),
-                            controller: phoneNumberController,
-                            hintText: '+23490312221246',
+                            obscure: true,
+                            controller: nameController,
+                            hintText: 'John Rice',
                             borderSide: BorderSide.none,
+                            keyboardType: TextInputType.emailAddress,
+                          )),
+                      SizedBox(
+                        height: 1.h,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Text('Email',
+                                style:
+                                    // GoogleFonts.nunito(
+                                    TextStyle(
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w600,
+                                )
+                                // ),
+                                ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 1.h,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Text('City,State',
+                          SizedBox(
+                            height: 50.h,
+                            width: 320.w,
+                            child: RailBuddyTextFormField(
+                              controller: emailController,
+                              hintText: 'johnrice@gmail.com',
+                              borderSide: BorderSide.none,
+                              keyboardType: TextInputType.emailAddress,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Text('Birth Date',
+                                style:
+                                    // GoogleFonts.nunito(
+                                    TextStyle(
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w600,
+                                )
+                                // ),
+                                ),
+                          ),
+                          SizedBox(
+                            height: 50.h,
+                            width: 320.w,
+                            child: TextField(
+                              decoration: InputDecoration(
+                                // suffixIcon: suffixIcon,
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(16, 0, 0, 0),
+                                //hintText: hintText,
+                                fillColor: Colors.grey.shade300,
+                                filled: true,
+                                hintText: 'Birth Date',
+                                errorStyle: const TextStyle(
+                                    height: 0, color: Colors.red),
+                                hintStyle: TextStyle(
+                                  fontSize: 16.sp,
+                                  color: const Color(0xFF969A9D),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.r),
+                                  borderSide: BorderSide.none,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.r),
+                                  borderSide: BorderSide.none,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.r),
+                                  borderSide: BorderSide.none,
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.r),
+                                  borderSide: BorderSide.none,
+                                ),
+                              ),
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: const Color(0xFF969A9D),
+                              ),
+                              onTap: () async {
+                                final date = await showDatePicker(
+                                  context: context,
+                                  initialDate: selectedDate ?? _maximumDate,
+                                  firstDate: _minimumDate,
+                                  lastDate: _maximumDate,
+                                );
+                                if (date != null) {
+                                  setState(() {
+                                    selectedDate = date;
+                                  });
+                                }
+                              },
+                              onChanged: (value) {
+                                setState(() {
+                                  selectedDate =
+                                      DateFormat('yyyy-MM-dd').parse(value);
+                                });
+                              },
+                              controller: TextEditingController(
+                                  text: selectedDate == null
+                                      ? ''
+                                      : DateFormat('yyyy-MM-dd')
+                                          .format(selectedDate)),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Text(
+                              'Phone Number',
                               style:
                                   // GoogleFonts.nunito(
                                   TextStyle(
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
-                              )
-                              // ),
                               ),
-                        ),
-                        SizedBox(
-                          height: 50.h,
-                          width: 320.w,
-                          child: RailBuddyTextFormField(
-                            controller: emailController,
-                            hintText: 'Ikoyi,Lagos',
-                            borderSide: BorderSide.none,
-                            keyboardType: TextInputType.emailAddress,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 1.h,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Text('Country',
-                              style:
-                                  // GoogleFonts.nunito(
-                                  TextStyle(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                              )
                               // ),
-                              ),
-                        ),
-                        SizedBox(
-                          height: 50.h,
-                          width: 320.w,
-                          child: RailBuddyTextFormField(
-                            controller: emailController,
-                            hintText: 'Nigeria',
-                            borderSide: BorderSide.none,
-                            keyboardType: TextInputType.emailAddress,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                          SizedBox(
+                            height: 50.h,
+                            width: 320.w,
+                            child: RailBuddyTextFormField(
+                              keyboardType:
+                                  const TextInputType.numberWithOptions(),
+                              controller: phoneNumberController,
+                              hintText: '+23490312221246',
+                              borderSide: BorderSide.none,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 1.h,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Text('City,State',
+                                style:
+                                    // GoogleFonts.nunito(
+                                    TextStyle(
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w600,
+                                )
+                                // ),
+                                ),
+                          ),
+                          SizedBox(
+                            height: 50.h,
+                            width: 320.w,
+                            child: RailBuddyTextFormField(
+                              controller: emailController,
+                              hintText: 'Ikoyi,Lagos',
+                              borderSide: BorderSide.none,
+                              keyboardType: TextInputType.emailAddress,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 1.h,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Text('Country',
+                                style:
+                                    // GoogleFonts.nunito(
+                                    TextStyle(
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w600,
+                                )
+                                // ),
+                                ),
+                          ),
+                          SizedBox(
+                            height: 50.h,
+                            width: 320.w,
+                            child: RailBuddyTextFormField(
+                              controller: emailController,
+                              hintText: 'Nigeria',
+                              borderSide: BorderSide.none,
+                              keyboardType: TextInputType.emailAddress,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 12.h,
-              ),
-              InkWell(
-                onTap: () => _confirmDeleteAccount(),
-                child: Padding(
-                  padding: const EdgeInsets.all(28.0),
-                  child: Text(
-                    'Delete Account',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue.shade800,
+                SizedBox(
+                  height: 12.h,
+                ),
+                InkWell(
+                  onTap: () => _confirmDeleteAccount(),
+                  child: Padding(
+                    padding: const EdgeInsets.all(28.0),
+                    child: Text(
+                      'Delete Account',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue.shade800,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
     );
   }
-  
-Future<void> _confirmDeleteAccount() async {
-  return showDialog(
-    barrierDismissible: false, // user must tap button!
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: const Text('Delete account'),
-        content: SingleChildScrollView(
-          child: ListBody(
-            children: const <Widget>[
-              Text('Are you sure you want to delete your account?'),
-            ],
-          ),
-        ),
-        actions: <Widget>[
-          RailBuddyButton(text: 'No', 
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-          RailBuddyButton(text: 'Yes', 
-            onPressed: () {
-              Navigator.of(context).pop();
-              deleteAccount();
-            },
-            
-          ),
-        ],
-      );
-    }, context: context,
-  );
-}
-}
 
+  Future<void> _confirmDeleteAccount() async {
+    return showDialog(
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Delete account'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text('Are you sure you want to delete your account?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            RailBuddyButton(
+              text: 'No',
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            RailBuddyButton(
+              text: 'Yes',
+              onPressed: () {
+                Navigator.of(context).pop();
+                deleteAccount();
+              },
+            ),
+          ],
+        );
+      },
+      context: context,
+    );
+  }
+}
