@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:train_app/screens/sign_in_screen.dart';
 
 import '../railBuddyButton.dart';
 import '../railBuddyTextFormField.dart';
+import 'admin/admin_profile.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String id = 'register-screen';
@@ -204,24 +206,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                           )),
                                     ],
                                   ),
-                                  Text('        Policy ',
-                                      style: TextStyle(
-                                        color: Colors.blue.shade700,
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w600,
-                                      ),),
+                                  Text(
+                                    '        Policy ',
+                                    style: TextStyle(
+                                      color: Colors.blue.shade700,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
                           ),
                           SizedBox(height: 15.h),
                           SizedBox(
-                              height: 50.h,
-                              width: 300.w,
-                              child: RailBuddyButton(
-                                text: 'Create Account',
-                                onPressed: Navigator.of(context).pop,
-                              )),
+                            height: 50.h,
+                            width: 300.w,
+                            child: RailBuddyButton(
+                              text: 'Create Account',
+                              onPressed: () {
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: ((context) => AdminProfilePage()),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
                           SizedBox(height: 15.h),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -238,7 +249,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   // ),
                                   ),
                               TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                        builder: ((context) => LoginScreen()),
+                                      ),
+                                    );
+                                  },
                                   child: Text('Sign In',
                                       style:
                                           // GoogleFonts.nunito(
