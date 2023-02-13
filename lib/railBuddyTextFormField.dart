@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'theme/constraints.dart';
 
 class RailBuddyTextFormField extends StatefulWidget {
   final TextEditingController controller;
@@ -9,10 +10,8 @@ class RailBuddyTextFormField extends StatefulWidget {
   final TextInputType keyboardType;
   bool obscure;
 
-  RailBuddyTextFormField(
-    
-    {
-      this.obscure = false,
+  RailBuddyTextFormField({
+    this.obscure = false,
     required this.controller,
     this.hintText,
     required this.borderSide,
