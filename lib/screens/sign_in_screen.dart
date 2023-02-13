@@ -5,6 +5,7 @@ import 'package:train_app/railBuddyButton.dart';
 import 'package:train_app/railBuddyTextFormField.dart';
 
 import 'forgot_password.dart';
+import 'sign_up_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login-screen';
@@ -53,66 +54,75 @@ class _LoginScreenState extends State<LoginScreen> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'Sign In',
-                                style: TextStyle(
-                                  color: Colors.blue.shade800,
-                                  fontSize: 33.sp,
-                                  fontWeight: FontWeight.w600,
+                              Padding(
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: Text(
+                                  'Sign In',
+                                  style: TextStyle(
+                                    color: Colors.blue.shade800,
+                                    fontSize: 33.sp,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                               SizedBox(
-                                height: 15.h,
+                                height: 50.h,
                               ),
-                              Text('Username',
-                                  style:
-                                      // GoogleFonts.nunito(
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text('Email',
+                                    style:
+                                        // GoogleFonts.nunito(
 
-                                      TextStyle(
-                                    color: Colors.blue,
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w600,
-                                  )
-                                  // ),
-                                  ),
+                                        TextStyle(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w600,
+                                    )
+                                    // ),
+                                    ),
+                              ),
                               SizedBox(
-                                  height: 50.h,
-                                  width: 300.w,
-                                  child: RailBuddyTextFormField(
-                                    controller: usernameController,
-                                    hintText: 'Username',
-                                    borderSide: BorderSide.none,
-                                  )),
+                                height: 50.h,
+                                width: 300.w,
+                                child: RailBuddyTextFormField(
+                                  controller: usernameController,
+                                  hintText: 'Email address..',
+                                  borderSide: BorderSide.none, keyboardType: TextInputType.emailAddress,
+                                ),
+                              ),
                             ],
                           ),
                           SizedBox(
-                            height: 30.h,
+                            height: 8.h,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Password',
-                                  style:
-                                      // GoogleFonts.nunito(
-                                      TextStyle(
-                                    color: Colors.blue,
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w600,
-                                  )
-                                  // ),
-                                  ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text('Password',
+                                    style:
+                                        // GoogleFonts.nunito(
+                                        TextStyle(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w600,
+                                    )
+                                    // ),
+                                    ),
+                              ),
                               SizedBox(
                                   height: 50.h,
                                   width: 300.w,
                                   child: RailBuddyTextFormField(
+                                    obscure: true,
                                     controller: passwordController,
                                     hintText: 'Password',
-                                    borderSide: BorderSide.none,
+                                    borderSide: BorderSide.none, keyboardType: TextInputType.emailAddress,
                                   )),
                             ],
                           ),
                           SizedBox(
-                            height: 15.h,
+                            height: 10.h,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
@@ -134,12 +144,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                   // )
                                   ),
                               SizedBox(
-                                height: 15.h,
+                                height: 45.h,
                               ),
                               SizedBox(
                                   height: 50.h,
                                   width: 300.w,
-                                  child: RailBuddyButton(text: 'Login')),
+                                  child: RailBuddyButton(text: 'Login', onPressed: Navigator.of(context).pop,)),
                             ],
                           ),
                           SizedBox(height: 15.h),
@@ -158,13 +168,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                   // ),
                                   ),
                               TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                        builder: ((context) =>
+                                            RegisterScreen()),
+                                      ),
+                                    );
+                                  },
                                   child: Text('Sign Up',
                                       style:
                                           // GoogleFonts.nunito(
                                           TextStyle(
-                                        color: Colors.blue,
-                                        fontSize: 16.sp,
+                                        color: Colors.blue.shade700,
+                                        fontSize: 20.sp,
                                         fontWeight: FontWeight.w600,
                                       )
                                       // ),

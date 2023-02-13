@@ -66,6 +66,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                   height: 50.h,
                                   width: 300.w,
                                   child: RailBuddyTextFormField(
+                                    keyboardType: TextInputType.emailAddress,
                                     controller: emailController,
                                     hintText: 'Password',
                                     borderSide: BorderSide.none,)),
@@ -82,7 +83,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               SizedBox(
                                   height: 50.h,
                                   width: 300.w,
-                                  child: RailBuddyButton(text: 'Submit')
+                                  child: RailBuddyButton(text: 'Submit', onPressed: Navigator.of(context).pop)
                               ),
                             ],
                           ),

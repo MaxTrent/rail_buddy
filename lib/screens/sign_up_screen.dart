@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../railBuddyButton.dart';
 import '../railBuddyTextFormField.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -18,143 +19,246 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-      return SafeArea(
+    return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: Stack(
           clipBehavior: Clip.none,
           children: [
-            Image.asset('assets/images/train_image.png'),
+            Container(
+              width: double.infinity,
+              height: 280,
+              child: Image.asset(
+                'assets/images/train_image.png',
+                fit: BoxFit.fill,
+              ),
+            ),
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 550.h,
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(30.r), topRight: Radius.circular(30.r))
-                ),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30.r),
+                        topRight: Radius.circular(30.r))),
                 child: Center(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 15.0.h),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Sign Up', style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 33.sp,
-                              fontWeight: FontWeight.w600,
-                            ),),
-                            SizedBox(height: 15.h,),
-                            Text('FullName', style: 
-                            // GoogleFonts.nunito(
-                              TextStyle(color: Colors.blue,
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w600,)
-                            // ),
-                            ),
-                            SizedBox(
+                      padding: EdgeInsets.only(top: 15.0.h),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: Text(
+                                  'Sign Up',
+                                  style: TextStyle(
+                                    color: Colors.blue.shade800,
+                                    fontSize: 33.sp,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
                                 height: 50.h,
-                                width: 300.w,
-                                child: RailBuddyTextFormField(
-                                  controller: fullnameController,
-                                  hintText: 'FullName',
-                                  borderSide: BorderSide.none,)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text('FullName',
+                                    style:
+                                        // GoogleFonts.nunito(
 
-                            Text('Username', style: 
-                            // GoogleFonts.nunito(
-                              TextStyle(color: Colors.blue,
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w600,)
-                            // ),
-                            ),
-                            SizedBox(
+                                        TextStyle(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w600,
+                                    )
+                                    // ),
+                                    ),
+                              ),
+                              SizedBox(
                                 height: 50.h,
                                 width: 300.w,
                                 child: RailBuddyTextFormField(
                                   controller: usernameController,
-                                  hintText: 'Username',
-                                  borderSide: BorderSide.none,)),
-                          ],
-                        ),
-
-                        SizedBox(height: 30.h,),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Password', style: 
-                            // GoogleFonts.nunito(
-                              TextStyle(color: Colors.blue,
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w600,)
-                            // ),
+                                  hintText: 'FullName',
+                                  borderSide: BorderSide.none,
+                                  keyboardType: TextInputType.emailAddress,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text('Email',
+                                    style:
+                                        // GoogleFonts.nunito(
+                                        TextStyle(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w600,
+                                    )
+                                    // ),
+                                    ),
+                              ),
+                              SizedBox(
+                                  height: 50.h,
+                                  width: 300.w,
+                                  child: RailBuddyTextFormField(
+                                    obscure: true,
+                                    controller: passwordController,
+                                    hintText: 'Email address ...',
+                                    borderSide: BorderSide.none,
+                                    keyboardType: TextInputType.emailAddress,
+                                  )),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text('Password',
+                                    style:
+                                        // GoogleFonts.nunito(
+                                        TextStyle(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w600,
+                                    )
+                                    // ),
+                                    ),
+                              ),
+                              SizedBox(
+                                  height: 50.h,
+                                  width: 300.w,
+                                  child: RailBuddyTextFormField(
+                                    obscure: true,
+                                    controller: passwordController,
+                                    hintText: 'Password',
+                                    borderSide: BorderSide.none,
+                                    keyboardType: TextInputType.emailAddress,
+                                  )),
+                            ],
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 45.0, right: 30),
+                            child: Container(
+                              height: 47,
+                              width: double.infinity,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 6.0),
+                                        child: Container(
+                                          width: 20,
+                                          height: 20,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            border: Border.all(
+                                                width: 1.5,
+                                                color: Colors.black),
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        'I agree to the ',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Text('Terms and Conditions ',
+                                          style: TextStyle(
+                                            color: Colors.blue.shade700,
+                                            fontSize: 16.sp,
+                                            fontWeight: FontWeight.w600,
+                                          )),
+                                      Text(
+                                        'and ',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Text('Privacy ',
+                                          style: TextStyle(
+                                            color: Colors.blue.shade700,
+                                            fontSize: 14.sp,
+                                            fontWeight: FontWeight.w600,
+                                          )),
+                                    ],
+                                  ),
+                                  Text('        Policy ',
+                                      style: TextStyle(
+                                        color: Colors.blue.shade700,
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w600,
+                                      ),),
+                                ],
+                              ),
                             ),
-                            SizedBox(
-                                height: 50.h,
-                                width: 300.w,
-                                child: RailBuddyTextFormField(
-                                  controller: passwordController,
-                                  hintText: 'Password',
-                                  borderSide: BorderSide.none,)),
-
-                          ],
-                        ),
-
-                        SizedBox(height: 15.h,),
-                        // Column(
-                        //   crossAxisAlignment: CrossAxisAlignment.end,
-                        //   children: [
-                        //     TextButton(onPressed: (){
-                        //       Navigator.pushNamed(context, ForgotPassword.id);
-                        //     }, child: Text('Forgot Password?',
-                        //       style: GoogleFonts.nunito(
-                        //         fontSize: 16.sp,
-                        //         color: Colors.black,
-                        //     fontWeight: FontWeight.w600),)),
-                        //     SizedBox(height: 15.h,),
-                        //     SizedBox(
-                        //         height: 50.h,
-                        //         width: 300.w,
-                        //         child: RailBuddyButton(text: 'Login')
-                        //     ),
-                        //   ],
-                        // ),
-
-                        SizedBox(height: 15.h),
-                        Row(
+                          ),
+                          SizedBox(height: 15.h),
+                          SizedBox(
+                              height: 50.h,
+                              width: 300.w,
+                              child: RailBuddyButton(
+                                text: 'Create Account',
+                                onPressed: Navigator.of(context).pop,
+                              )),
+                          SizedBox(height: 15.h),
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                          Text('Don\'t have an account yet?',
-                          style: 
-                          // GoogleFonts.nunito(
-                            TextStyle(color: Colors.black,
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w600,)
-                          // ),
+                              Text('Already have a account?',
+                                  style:
+                                      // GoogleFonts.nunito(
+                                      TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w600,
+                                  )
+                                  // ),
+                                  ),
+                              TextButton(
+                                  onPressed: () {},
+                                  child: Text('Sign In',
+                                      style:
+                                          // GoogleFonts.nunito(
+                                          TextStyle(
+                                        color: Colors.blue.shade700,
+                                        fontSize: 20.sp,
+                                        fontWeight: FontWeight.w600,
+                                      )
+                                      // ),
+                                      )),
+                            ],
                           ),
-                          TextButton(onPressed: (){}, child: Text('Sign Up', style: 
-                          // GoogleFonts.nunito(
-                            TextStyle(color: Colors.blue,
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w600,)
-                          // ),
-                          )),
-                          ],
-                        ),],)
-                    ),
-                  ),
+                        ],
+                      )),
                 ),
               ),
-
+            ),
           ],
         ),
       ),
     );
-    
   }
 }
