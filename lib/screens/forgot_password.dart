@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:train_app/constraints.dart';
+import 'package:train_app/theme/constraints.dart';
 import 'package:train_app/railBuddyButton.dart';
 import 'package:train_app/railBuddyTextFormField.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -57,16 +58,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               SizedBox(
                                 height: 30.h,
                               ),
-                              Text(
-                                'Email',
-                                style:  Theme.of(context).textTheme.headline1
-                              ),
+                              Text('Email',
+                                  style: Theme.of(context).textTheme.headline1),
                               SizedBox(
                                   height: 50.h,
                                   width: 300.w,
                                   child: RailBuddyTextFormField(
+                                    keyboardType: TextInputType.emailAddress,
                                     controller: emailController,
-                                    borderSide: BorderSide.none, fillColor: fColorGrey,
+                                    borderSide: BorderSide.none,
+                                    fillColor: fColorGrey,
                                   )),
                             ],
                           ),
@@ -95,10 +96,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              child: Text(
-                                'Back to Login',
-                                style:  Theme.of(context).textTheme.headline1
-                              )),
+                              child: Text('Back to Login',
+                                  style:
+                                      Theme.of(context).textTheme.headline1)),
                         ],
                       )),
                 ),
