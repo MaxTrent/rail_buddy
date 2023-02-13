@@ -249,27 +249,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   // ),
                                   ),
                               TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                        builder: ((context) => LoginScreen()),
-                                      ),
-                                    );
-                                  },
-                                  child: Text('Sign In',
-                                      style:
-                                          // GoogleFonts.nunito(
-                                          TextStyle(
-                                        color: Colors.blue.shade700,
-                                        fontSize: 20.sp,
-                                        fontWeight: FontWeight.w600,
-                                      )
-                                      // ),
-                                      )),
+                                onPressed: () {
+                                  Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                      builder: ((context) => LoginScreen()),
+                                    ),
+                                  );
+                                },
+                                child: Text('Sign In',
+                                    style:
+                                        // GoogleFonts.nunito(
+                                        TextStyle(
+                                      color: Colors.blue.shade700,
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.w600,
+                                    )
+                                    // ),
+                                    ),
+                              ),
                             ],
                           ),
                         ],
-                      )),
+                      ),),
                 ),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:train_app/screens/admin/admin_profile.dart';
 
 import '../../railBuddyTextFormField.dart';
 
@@ -34,7 +35,13 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: ((context) => const AdminProfilePage()),
+                        ),
+                      );
+                    },
                     child: Text(
                       'Cancel',
                       style: TextStyle(
@@ -56,7 +63,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
                     onTap: () {},
-                    child: Text(
+                    child: const Text(
                       'Save',
                       style: TextStyle(
                         fontSize: 20,

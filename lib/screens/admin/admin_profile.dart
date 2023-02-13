@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../sign_in_screen.dart';
 import 'admin_update_profile_screen.dart';
 
 class AdminProfilePage extends StatefulWidget {
@@ -37,7 +38,12 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                   ),
                   child: IconButton(
                     onPressed: () {
-                      Navigator.of(context).pop;
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: ((context) => LoginScreen()),
+                        ),
+                      );
+                      
                     },
                     icon: const Icon(
                       Icons.arrow_back_ios_new,
