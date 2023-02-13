@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:train_app/railBuddyButton.dart';
 import 'package:train_app/railBuddyTextFormField.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 
 
 
@@ -55,11 +55,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                 fontWeight: FontWeight.w600,
                               ),),
                               SizedBox(height: 30.h,),
-                              Text('Email', style: GoogleFonts.nunito(
-                                color: Colors.blue,
+                              Text('Email', style: 
+                              // GoogleFonts.nunito(
+                                TextStyle(color: Colors.blue,
                                 fontSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                              ),),
+                                fontWeight: FontWeight.w600,)
+                              // ),
+                              ),
                               SizedBox(
                                   height: 50.h,
                                   width: 300.w,
@@ -89,11 +91,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
                           TextButton(onPressed: (){
                             Navigator.pop(context);
-                          }, child: Text('Back to Login', style: GoogleFonts.nunito(
-                            color: Colors.blue,
+                          }, child: Text('Back to Login', style: 
+                          // GoogleFonts.nunito(
+                            TextStyle(color: Colors.blue,
                             fontSize: 16.sp,
-                            fontWeight: FontWeight.w600,
-                          ),)),],)
+                            fontWeight: FontWeight.w600,)
+                          // ),
+                          )),],)
                   ),
                 ),
               ),
