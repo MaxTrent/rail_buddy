@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:train_app/screens/forgot_password.dart';
-import 'package:train_app/screens/homepage.dart';
-import 'package:train_app/screens/login_screen.dart';
-import 'package:train_app/theme/railBuddyTheme.dart';
+
+import 'screens/admin/admin_profile.dart';
+import 'screens/sign_in_screen.dart';
+import 'screens/sign_up_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -21,21 +21,22 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return ScreenUtilInit(
-      builder: (context, child)=> MaterialApp(
+      builder: (context, child) => MaterialApp(
         themeMode: ThemeMode.system,
         debugShowCheckedModeBanner: false,
         title: 'Train Ticketing App',
-        theme: RailBuddyTheme.appTheme,
-        initialRoute: LoginScreen.id,
+        theme: ThemeData(
+          // textTheme: GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme),
+          primarySwatch: Colors.blue,
+        ),
+        initialRoute: AdminProfilePage.id,
         routes: {
           LoginScreen.id: (context) => LoginScreen(),
           ForgotPassword.id: (context) => ForgotPassword(),
-          HomePage.id: (context) => HomePage(),
+          RegisterScreen.id: (context) => RegisterScreen(),
+          AdminProfilePage.id: (context) => AdminProfilePage(),
         },
-
       ),
     );
   }
 }
-
-
