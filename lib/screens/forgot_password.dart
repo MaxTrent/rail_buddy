@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:train_app/theme/constraints.dart';
+import 'package:train_app/constraints.dart';
 import 'package:train_app/railBuddyButton.dart';
 import 'package:train_app/railBuddyTextFormField.dart';
 import 'package:google_fonts/google_fonts.dart';
