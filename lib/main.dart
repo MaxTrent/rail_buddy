@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return ScreenUtilInit(
-      builder: (context, child)=> MaterialApp(
+      builder: (context, child) => MaterialApp(
         themeMode: ThemeMode.system,
         debugShowCheckedModeBanner: false,
         title: 'Train Ticketing App',
@@ -41,4 +41,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

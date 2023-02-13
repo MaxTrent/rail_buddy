@@ -92,6 +92,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 child: Text('FullName',
                                     style:
                                         // GoogleFonts.nunito(
+
                                         TextStyle(
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w600,
@@ -112,7 +113,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ],
                           ),
                           SizedBox(
-                            height: 5.h,
+                            height: 1.h,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,7 +143,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ],
                           ),
                           SizedBox(
-                            height: 5.h,
+                            height: 1.h,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -235,7 +236,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 15.h),
+                          SizedBox(height: 11.h),
                           SizedBox(
                             height: 50.h,
                             width: 300.w,
@@ -250,7 +251,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               },
                             ),
                           ),
-                          SizedBox(height: 15.h),
+                          SizedBox(height: 11.h),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,

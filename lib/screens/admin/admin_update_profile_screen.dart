@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:train_app/screens/admin/admin_profile.dart';
 
+import '../../railBuddyButton.dart';
 import '../../railBuddyTextFormField.dart';
+import '../../services/user_services.dart';
 
 class AdminUpdateProfileScreen extends StatefulWidget {
   static const String id = 'admin-update-profile';
@@ -183,10 +185,10 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                               filled: true,
                               hintText: 'Birth Date',
                               errorStyle:
-                                  TextStyle(height: 0, color: Colors.red),
+                                  const TextStyle(height: 0, color: Colors.red),
                               hintStyle: TextStyle(
                                 fontSize: 16.sp,
-                                color: Color(0xFF969A9D),
+                                color: const Color(0xFF969A9D),
                                 fontWeight: FontWeight.w500,
                               ),
                               border: OutlineInputBorder(
@@ -206,9 +208,9 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                                 borderSide: BorderSide.none,
                               ),
                             ),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 16,
-                              color: Color(0xFF969A9D),
+                              color: const Color(0xFF969A9D),
                             ),
                             onTap: () async {
                               final date = await showDatePicker(
@@ -258,7 +260,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                           height: 50.h,
                           width: 320.w,
                           child: RailBuddyTextFormField(
-                            keyboardType: TextInputType.numberWithOptions(),
+                            keyboardType: const TextInputType.numberWithOptions(),
                             controller: phoneNumberController,
                             hintText: '+23490312221246',
                             borderSide: BorderSide.none,
@@ -333,7 +335,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                 height: 12.h,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () => _confirmDeleteAccount(),
                 child: Padding(
                   padding: const EdgeInsets.all(28.0),
                   child: Text(
@@ -352,4 +354,37 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
       ),
     );
   }
+  
+Future<void> _confirmDeleteAccount() async {
+  return showDialog(
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Delete account'),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: const <Widget>[
+              Text('Are you sure you want to delete your account?'),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          RailBuddyButton(text: 'No', 
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          RailBuddyButton(text: 'Yes', 
+            onPressed: () {
+              Navigator.of(context).pop();
+              deleteAccount();
+            },
+            
+          ),
+        ],
+      );
+    }, context: context,
+  );
 }
+}
+
