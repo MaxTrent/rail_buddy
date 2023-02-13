@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:train_app/screens/forgot_password.dart';
 import 'package:train_app/screens/homepage.dart';
 import 'package:train_app/screens/login_screen.dart';
-import 'package:train_app/RailBuddyTheme.dart';
+import 'package:train_app/theme/railBuddyTheme.dart';
 
 void main() {
   runApp(const MyApp());

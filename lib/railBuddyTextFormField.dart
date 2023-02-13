@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'constraints.dart';
+import 'theme/constraints.dart';
 
 class RailBuddyTextFormField extends StatefulWidget {
   final TextEditingController controller;
