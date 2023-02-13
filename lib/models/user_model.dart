@@ -1,5 +1,3 @@
-import 'dart:io';
-
 class User {
   String? userName;
   String? email;

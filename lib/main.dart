@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:train_app/screens/forgot_password.dart';
 
 import 'screens/admin/admin_profile.dart';
@@ -33,8 +34,8 @@ class MyApp extends StatelessWidget {
         routes: {
           LoginScreen.id: (context) => LoginScreen(),
           ForgotPassword.id: (context) => ForgotPassword(),
-          RegisterScreen.id: (context) => RegisterScreen(),
-          AdminProfilePage.id: (context) => AdminProfilePage(),
+          RegisterScreen.id: (context) => const RegisterScreen(),
+          AdminProfilePage.id: (context) => const AdminProfilePage(),
         },
       ),
     );
