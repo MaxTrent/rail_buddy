@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,26 +7,37 @@ import '../railBuddyButton.dart';
 import '../railBuddyTextFormField.dart';
 import 'forgot_password.dart';
 import 'homepage.dart';
-// import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:train_app/constraints.dart';
-// import 'package:train_app/RailBuddyTheme.dart';
-// import '../railBuddyButton.dart';
-// import '../railBuddyTextFormField.dart';
-// import 'forgot_password.dart';
-// import 'homepage.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../railBuddyButton.dart';
+import '../railBuddyTextFormField.dart';
+import 'forgot_password.dart';
+import 'homepage.dart';
 
-// class LoginScreen extends StatefulWidget {
-//   static const String id = 'login-screen';
+class LoginScreen extends StatefulWidget {
+  static const String id = 'login-screen';
 
-//   @override
-//   State<LoginScreen> createState() => _LoginScreenState();
-// }
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
 
-// class _LoginScreenState extends State<LoginScreen> {
-//   var usernameController = TextEditingController();
-//   var passwordController = TextEditingController();
+class _LoginScreenState extends State<LoginScreen> {
+  var usernameController = TextEditingController();
+  var passwordController = TextEditingController();
+
+  Future<void> signIn(username, password) async {
+    try {
+      final credential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: username, password: password);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +84,8 @@ import 'homepage.dart';
                                   width: 300.w,
                                   child: RailBuddyTextFormField(
                                     controller: usernameController,
-                                    borderSide: BorderSide.none, fillColor: fColorGrey,
+                                    borderSide: BorderSide.none,
+                                    fillColor: fColorGrey,
                                   )),
                             ],
                           ),
@@ -89,7 +102,8 @@ import 'homepage.dart';
                                   width: 300.w,
                                   child: RailBuddyTextFormField(
                                     controller: passwordController,
-                                    borderSide: BorderSide.none, fillColor: fColorGrey,
+                                    borderSide: BorderSide.none,
+                                    fillColor: fColorGrey,
                                   )),
                             ],
                           ),
@@ -117,9 +131,11 @@ import 'homepage.dart';
                                   width: 300.w,
                                   child: RailBuddyButton(
                                     text: 'Login',
-                                    onPressed:
-                                    (){Navigator.pushNamed(context, HomePage.id);}
-                                    , color: bColorWhite, backgroundColor: fColorBlue,
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, HomePage.id);
+                                    },
+                                    color: bColorWhite,
+                                    backgroundColor: fColorBlue,
                                   )),
                             ],
                           ),
@@ -128,16 +144,17 @@ import 'homepage.dart';
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
-                                'Don\'t have an account yet?',
-                                style: Theme.of(context).textTheme.headline1!.copyWith(color: Colors.black)
-                              ),
+                              Text('Don\'t have an account yet?',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline1!
+                                      .copyWith(color: Colors.black)),
                               TextButton(
                                   onPressed: () {},
-                                  child: Text(
-                                    'Sign Up',
-                                    style:  Theme.of(context).textTheme.headline1
-                                  )),
+                                  child: Text('Sign Up',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline1)),
                             ],
                           ),
                         ],
