@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:train_app/screens/admin/admin_update_station.dart';
 import 'package:train_app/screens/forgot_password.dart';
 import 'package:train_app/screens/homepage.dart';
 import 'package:train_app/screens/user/user_profile.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
           // textTheme: GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme),
           primarySwatch: Colors.blue,
         ),
-        home: UserProfilePage(),
+        home: AdminUpdateStationScreen(),
         routes: {
           LoginScreen.id: (context) => LoginScreen(),
           ForgotPassword.id: (context) => ForgotPassword(),

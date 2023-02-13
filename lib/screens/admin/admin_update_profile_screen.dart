@@ -306,7 +306,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                             height: 50.h,
                             width: 320.w,
                             child: RailBuddyTextFormField(
-                              controller: emailController,
+                              controller: cityController,
                               hintText: 'Ikoyi,Lagos',
                               borderSide: BorderSide.none,
                               keyboardType: TextInputType.emailAddress,
@@ -336,7 +336,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                             height: 50.h,
                             width: 320.w,
                             child: RailBuddyTextFormField(
-                              controller: emailController,
+                              controller: cityController,
                               hintText: 'Nigeria',
                               borderSide: BorderSide.none,
                               keyboardType: TextInputType.emailAddress,
