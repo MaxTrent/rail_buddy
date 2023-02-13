@@ -16,12 +16,6 @@ class RailBuddyTheme{
         fontWeight: FontWeight.bold,
         fontSize: 16,
       ),
-      headline2: GoogleFonts.nunito(
-        color: fColorBlue,
-        fontStyle: FontStyle.normal,
-        fontWeight: FontWeight.bold,
-        fontSize: 16,
-      ),
     ),
   );
 }

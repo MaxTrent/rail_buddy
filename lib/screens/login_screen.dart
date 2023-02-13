@@ -64,8 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   width: 300.w,
                                   child: RailBuddyTextFormField(
                                     controller: usernameController,
-                                    hintText: 'Username',
-                                    borderSide: BorderSide.none,
+                                    borderSide: BorderSide.none, fillColor: fColorGrey,
                                   )),
                             ],
                           ),
@@ -82,8 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   width: 300.w,
                                   child: RailBuddyTextFormField(
                                     controller: passwordController,
-                                    hintText: 'Password',
-                                    borderSide: BorderSide.none,
+                                    borderSide: BorderSide.none, fillColor: fColorGrey,
                                   )),
                             ],
                           ),
@@ -111,9 +109,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   width: 300.w,
                                   child: RailBuddyButton(
                                     text: 'Login',
-                                    onPressed: () {
-                                      Navigator.pushNamed(context, HomePage.id);
-                                    }, color: bColorWhite, backgroundColor: fColorBlue,
+                                    onPressed:
+                                      Navigator.pushNamed(context, HomePage.id)
+                                    , color: bColorWhite, backgroundColor: fColorBlue,
                                   )),
                             ],
                           ),
