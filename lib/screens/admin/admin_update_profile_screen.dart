@@ -38,7 +38,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                     child: Text(
                       'Cancel',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 20,
                         color: Colors.blue.shade600,
                       ),
                     ),
@@ -59,8 +59,8 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                     child: Text(
                       'Save',
                       style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black26,
+                        fontSize: 20,
+                        color: Colors.black45,
                       ),
                     ),
                   ),
