@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "682782057965",
+    "project_id": "rail-buddy-c049c",
+    "storage_bucket": "rail-buddy-c049c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682782057965:android:2e0bb5170aa8957450b3e4",
+        "android_client_info": {
+          "package_name": "com.example.train_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682782057965-7askmbc8iunbc3hteqe4d4v6cgtu52oc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBexxTkiGfwJqLPggp8Z9ajxfiJyTGNPFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682782057965-7askmbc8iunbc3hteqe4d4v6cgtu52oc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "682782057965-ijthql8ebs7eo9qhmpbour1r2ebu5v67.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.trainApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

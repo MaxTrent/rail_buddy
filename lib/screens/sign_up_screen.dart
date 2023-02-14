@@ -25,29 +25,47 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        body: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            Container(
-              width: double.infinity,
-              height: 280,
-              child: Image.asset(
-                'assets/images/train_image.png',
-                fit: BoxFit.fill,
+        body: SingleChildScrollView(
+          child: Column(
+            // clipBehavior: Clip.none,
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 280,
+                    child: Image.asset(
+                      'assets/images/train_image.png',
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 232.0),
+                    child: Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.r),
+                          topRight: Radius.circular(30.r),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 550.h,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30.r),
-                        topRight: Radius.circular(30.r))),
-                child: Center(
-                  child: Padding(
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 550.h,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.r),
+                          topRight: Radius.circular(30.r))),
+                  child: Center(
+                    child: Padding(
                       padding: EdgeInsets.only(top: 15.0.h),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -89,14 +107,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 child: RailBuddyTextFormField(
                                   controller: usernameController,
                                   hintText: 'FullName',
-                                  borderSide: BorderSide.none, fillColor: fColorGrey,
-                                  // keyboardType: TextInputType.emailAddress,
+                                  borderSide: BorderSide.none,
+                                  keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                                 ),
                               ),
                             ],
                           ),
                           SizedBox(
-                            height: 5.h,
+                            height: 1.h,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,16 +135,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   height: 50.h,
                                   width: 300.w,
                                   child: RailBuddyTextFormField(
-                                    // obscure: true,
+                                    obscure: true,
                                     controller: passwordController,
                                     hintText: 'Email address ...',
-                                    borderSide: BorderSide.none, fillColor: fColorGrey,
-                                    // keyboardType: TextInputType.emailAddress,
+                                    borderSide: BorderSide.none,
+                                    keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                                   )),
                             ],
                           ),
                           SizedBox(
-                            height: 5.h,
+                            height: 1.h,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -147,11 +165,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   height: 50.h,
                                   width: 300.w,
                                   child: RailBuddyTextFormField(
-                                    // obscure: true,
+                                    obscure: true,
                                     controller: passwordController,
                                     hintText: 'Password',
-                                    borderSide: BorderSide.none, fillColor: fColorGrey,
-                                    // keyboardType: TextInputType.emailAddress,
+                                    borderSide: BorderSide.none,
+                                    keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                                   )),
                             ],
                           ),
@@ -219,7 +237,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 15.h),
+                          SizedBox(height: 11.h),
                           SizedBox(
                             height: 50.h,
                             width: 300.w,
@@ -231,10 +249,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     builder: ((context) => AdminProfilePage()),
                                   ),
                                 );
-                              }, color: bColorWhite, backgroundColor: fColorBlue,
+                              },
                             ),
                           ),
-                          SizedBox(height: 15.h),
+                          SizedBox(height: 11.h),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -271,11 +289,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ],
                           ),
                         ],
-                      ),),
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

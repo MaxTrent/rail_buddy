@@ -4,14 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class RailBuddyButton extends StatefulWidget {
   final String text;
   final VoidCallback onPressed;
-  final Color color;
-  final Color backgroundColor;
 
-  RailBuddyButton(
-      {required this.text,
-      required this.onPressed,
-      required this.color,
-      required this.backgroundColor});
+  RailBuddyButton({required this.text, required this.onPressed});
 
   @override
   State<RailBuddyButton> createState() => _RailBuddyButtonState();
@@ -22,13 +16,15 @@ class _RailBuddyButtonState extends State<RailBuddyButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: widget.onPressed,
-      child: Text(widget.text,
-          style: Theme.of(context)
-              .textTheme
-              .headline1!
-              .copyWith(color: widget.color)),
+      child: Text(
+        widget.text,
+        style: TextStyle(
+          fontSize: 16.sp,
+        ),
+      ),
       style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(widget.backgroundColor)),
+          backgroundColor:
+              MaterialStateProperty.all(Color.fromARGB(255, 47, 91, 167))),
     );
   }
 }

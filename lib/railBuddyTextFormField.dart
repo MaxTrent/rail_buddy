@@ -7,12 +7,15 @@ class RailBuddyTextFormField extends StatefulWidget {
   final String? hintText;
   final BorderSide borderSide;
   final Color fillColor;
+  bool obscure;
 
-  const RailBuddyTextFormField(
+   RailBuddyTextFormField(
       {required this.controller,
+      this.obscure = false,
       this.hintText,
       required this.borderSide,
-      required this.fillColor});
+      required this.fillColor,
+      required TextInputType keyboardType});
 
   @override
   State<RailBuddyTextFormField> createState() => _RailBuddyTextFormFieldState();
