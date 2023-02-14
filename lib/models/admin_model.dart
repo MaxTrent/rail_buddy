@@ -1,4 +1,3 @@
-import 'dart:io';
 class AdminModel{
   String? userName;
   String? email;

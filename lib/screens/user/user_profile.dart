@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:train_app/providers/user_providers.dart';
+import 'package:train_app/services/user_services.dart';
 
-import '../../services/user_services.dart';
+import '../../providers/user_providers.dart';
+import '../admin/admin_update_profile_screen.dart';
 import '../sign_in_screen.dart';
-import 'admin_update_profile_screen.dart';
 
-class AdminProfilePage extends StatefulWidget {
-  static const String id = 'admin-profile';
-  const AdminProfilePage({Key? key}) : super(key: key);
+class UserProfilePage extends StatefulWidget {
+  static const String id = 'user-profile';
+  const UserProfilePage({Key? key}) : super(key: key);
 
   @override
-  State<AdminProfilePage> createState() => _AdminProfilePageState();
+  State<UserProfilePage> createState() => _UserProfilePageState();
 }
 
-class _AdminProfilePageState extends State<AdminProfilePage> {
-  UserService userService = UserService();
+class _UserProfilePageState extends State<UserProfilePage> {
+  UserService _userService = UserService();
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -113,7 +114,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                     ),
                   ),
                   Text(
-                    userService.userModel!.fullName,
+                    _userService.userModel!.fullName,
                     style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
@@ -121,7 +122,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                     ),
                   ),
                   Text(
-                    userService.userModel!.email,
+                    _userService.userModel!.email,
                     style: TextStyle(
                       letterSpacing: 0.8,
                       fontSize: 16,
@@ -148,8 +149,8 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                               left: 20,
                             ),
                             child: profileColumn(
-                              'Station \nDetails',
-                              Icons.bus_alert_outlined,
+                              'Billing \nDetails',
+                              Icons.payments_outlined,
                             ),
                           ),
                           Padding(
@@ -158,7 +159,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                               right: 20,
                             ),
                             child: profileColumn(
-                              'Admin \nInformation',
+                              'User \nInformation',
                               Icons.info,
                             ),
                           ),

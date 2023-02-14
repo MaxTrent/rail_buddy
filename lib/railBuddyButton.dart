@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RailBuddyButton extends StatefulWidget {
   final String text;
-  Function onPressed;
+  final VoidCallback onPressed;
 
   RailBuddyButton({required this.text, required this.onPressed});
 
@@ -15,7 +15,7 @@ class _RailBuddyButtonState extends State<RailBuddyButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {widget.onPressed;},
+      onPressed: widget.onPressed,
       child: Text(
         widget.text,
         style: TextStyle(
