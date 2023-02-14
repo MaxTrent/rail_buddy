@@ -1,6 +1,9 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:train_app/screens/admin/admin_profile.dart';
+import 'package:train_app/screens/user/user_profile.dart';
 import 'package:train_app/theme/railBuddyTheme.dart';
 
 import '../railBuddyButton.dart';
@@ -43,7 +46,14 @@ class _HomePageState extends State<HomePage> {
                           backgroundColor: fColorGrey,
                           radius: 20.r,
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                               Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: ((context) =>
+                              const UserProfilePage()),
+                        ),
+                      );
+                            },
                             icon: Icon(
                               Icons.person,
                               size: 20.sp,
@@ -65,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                       style: Theme.of(context)
                           .textTheme
                           .headline1!
-                          .copyWith(fontSize: 28.sp, color: Colors.black),
+                          .copyWith(fontSize: 28.sp, fontWeight: FontWeight.w800, color: Colors.black),
                     ),
                   ),
                   Padding(

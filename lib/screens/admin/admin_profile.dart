@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:train_app/providers/user_providers.dart';
 
+import '../../services/user_services.dart';
 import '../sign_in_screen.dart';
 import 'admin_update_profile_screen.dart';
 
@@ -12,6 +14,7 @@ class AdminProfilePage extends StatefulWidget {
 }
 
 class _AdminProfilePageState extends State<AdminProfilePage> {
+  UserService userService = UserService();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -43,7 +46,6 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                           builder: ((context) => LoginScreen()),
                         ),
                       );
-                      
                     },
                     icon: const Icon(
                       Icons.arrow_back_ios_new,
@@ -111,7 +113,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                     ),
                   ),
                   Text(
-                    'John Rice',
+                    userService.userModel!.fullName,
                     style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
@@ -119,7 +121,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                     ),
                   ),
                   Text(
-                    'johnrice@gmail.com',
+                    userService.userModel!.email,
                     style: TextStyle(
                       letterSpacing: 0.8,
                       fontSize: 16,
@@ -164,7 +166,9 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                       ),
                       SizedBox(height: 25),
                       InkWell(
-                        onTap: () {},
+                        onTap: () async{
+                          UserProviders().signOut();
+                        },
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
