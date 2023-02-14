@@ -4,14 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_app/screens/admin/admin_update_station.dart';
 import 'package:train_app/screens/forgot_password.dart';
-import 'package:train_app/screens/homepage.dart';
-import 'package:train_app/screens/user/user_profile.dart';
+import 'package:train_app/screens/admin/admin_profile.dart';
+import 'package:train_app/screens/admin/admin_update_profile_screen.dart';
+import 'package:train_app/screens/admin/admin_update_station.dart';
+import 'package:train_app/screens/sign_up_screen.dart';
+import 'package:train_app/screens/sign_in_screen.dart';
 
-import 'screens/admin/admin_profile.dart';
-import 'screens/sign_in_screen.dart';
-import 'screens/sign_up_screen.dart';
-
-void main() {
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -33,12 +35,12 @@ class MyApp extends StatelessWidget {
           // textTheme: GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme),
           primarySwatch: Colors.blue,
         ),
-        home: AdminUpdateStationScreen(),
+        initialRoute: AdminProfilePage.id,
         routes: {
           LoginScreen.id: (context) => LoginScreen(),
           ForgotPassword.id: (context) => ForgotPassword(),
-          RegisterScreen.id: (context) => const RegisterScreen(),
-          AdminProfilePage.id: (context) => const AdminProfilePage(),
+          RegisterScreen.id: (context) => RegisterScreen(),
+          AdminProfilePage.id: (context) => AdminProfilePage(),
         },
       ),
     );

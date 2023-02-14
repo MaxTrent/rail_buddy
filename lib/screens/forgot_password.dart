@@ -66,10 +66,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                   height: 50.h,
                                   width: 300.w,
                                   child: RailBuddyTextFormField(
-                                    keyboardType: TextInputType.emailAddress,
+                                    // keyboardType: TextInputType.emailAddress,
                                     controller: emailController,
                                     hintText: 'Password',
-                                    borderSide: BorderSide.none,)),
+                                    borderSide: BorderSide.none, fillColor: bColorWhite, keyboardType: TextInputType.emailAddress,),),
 
                             ],
                           ),

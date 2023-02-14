@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:train_app/screens/sign_in_screen.dart';
+import 'package:train_app/theme/constraints.dart';
 
 import '../railBuddyButton.dart';
 import '../railBuddyTextFormField.dart';
@@ -107,7 +108,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   controller: usernameController,
                                   hintText: 'FullName',
                                   borderSide: BorderSide.none,
-                                  keyboardType: TextInputType.emailAddress,
+                                  keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                                 ),
                               ),
                             ],
@@ -138,7 +139,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     controller: passwordController,
                                     hintText: 'Email address ...',
                                     borderSide: BorderSide.none,
-                                    keyboardType: TextInputType.emailAddress,
+                                    keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                                   )),
                             ],
                           ),
@@ -168,7 +169,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     controller: passwordController,
                                     hintText: 'Password',
                                     borderSide: BorderSide.none,
-                                    keyboardType: TextInputType.emailAddress,
+                                    keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                                   )),
                             ],
                           ),

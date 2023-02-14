@@ -2,6 +2,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:train_app/screens/admin/admin_profile.dart';
+import 'package:train_app/theme/constraints.dart';
 
 import '../../railBuddyButton.dart';
 import '../../railBuddyTextFormField.dart';
@@ -140,7 +141,7 @@ class _AdminUpdateStationScreenState extends State<AdminUpdateStationScreen> {
                                   controller: nameController,
                                   hintText: 'International Train Services',
                                   borderSide: BorderSide.none,
-                                  keyboardType: TextInputType.emailAddress,
+                                  keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                                 )),
                             SizedBox(
                               height: 1.h,
@@ -167,7 +168,7 @@ class _AdminUpdateStationScreenState extends State<AdminUpdateStationScreen> {
                                     controller: emailController,
                                     hintText: '129GW120',
                                     borderSide: BorderSide.none,
-                                    keyboardType: TextInputType.emailAddress,
+                                    keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                                   ),
                                 ),
                               ],
@@ -195,7 +196,7 @@ class _AdminUpdateStationScreenState extends State<AdminUpdateStationScreen> {
                                     keyboardType: TextInputType.streetAddress,
                                     controller: addressController,
                                     hintText: 'No, 102 Texas Mary Island ',
-                                    borderSide: BorderSide.none,
+                                    borderSide: BorderSide.none, fillColor: fColorGrey,
                                   ),
                                 ),
                               ],
@@ -225,7 +226,7 @@ class _AdminUpdateStationScreenState extends State<AdminUpdateStationScreen> {
                                     controller: cityController,
                                     hintText: 'Lagos',
                                     borderSide: BorderSide.none,
-                                    keyboardType: TextInputType.emailAddress,
+                                    keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                                   ),
                                 ),
                               ],
@@ -255,7 +256,7 @@ class _AdminUpdateStationScreenState extends State<AdminUpdateStationScreen> {
                                     controller: departureTimeController,
                                     hintText: '11:00 am',
                                     borderSide: BorderSide.none,
-                                    keyboardType: TextInputType.emailAddress,
+                                    keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                                   ),
                                 ),
                               ],
@@ -285,7 +286,7 @@ class _AdminUpdateStationScreenState extends State<AdminUpdateStationScreen> {
                                     controller: arrivalTimeController,
                                     hintText: '1:00 pm',
                                     borderSide: BorderSide.none,
-                                    keyboardType: TextInputType.emailAddress,
+                                    keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                                   ),
                                 ),
                               ],

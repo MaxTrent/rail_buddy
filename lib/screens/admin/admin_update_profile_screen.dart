@@ -2,6 +2,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:train_app/screens/admin/admin_profile.dart';
+import 'package:train_app/theme/constraints.dart';
 
 import '../../railBuddyButton.dart';
 import '../../railBuddyTextFormField.dart';
@@ -140,7 +141,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                             controller: nameController,
                             hintText: 'John Rice',
                             borderSide: BorderSide.none,
-                            keyboardType: TextInputType.emailAddress,
+                            keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                           )),
                       SizedBox(
                         height: 1.h,
@@ -167,7 +168,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                               controller: emailController,
                               hintText: 'johnrice@gmail.com',
                               borderSide: BorderSide.none,
-                              keyboardType: TextInputType.emailAddress,
+                              keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                             ),
                           ),
                         ],
@@ -279,7 +280,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                                   const TextInputType.numberWithOptions(),
                               controller: phoneNumberController,
                               hintText: '+23490312221246',
-                              borderSide: BorderSide.none,
+                              borderSide: BorderSide.none, fillColor: fColorGrey,
                             ),
                           ),
                         ],
@@ -309,7 +310,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                               controller: cityController,
                               hintText: 'Ikoyi,Lagos',
                               borderSide: BorderSide.none,
-                              keyboardType: TextInputType.emailAddress,
+                              keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                             ),
                           ),
                         ],
@@ -339,7 +340,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                               controller: cityController,
                               hintText: 'Nigeria',
                               borderSide: BorderSide.none,
-                              keyboardType: TextInputType.emailAddress,
+                              keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                             ),
                           ),
                         ],

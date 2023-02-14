@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:train_app/railBuddyButton.dart';
 import 'package:train_app/railBuddyTextFormField.dart';
 import 'package:train_app/screens/admin/admin_profile.dart';
+import 'package:train_app/theme/constraints.dart';
 
 import 'forgot_password.dart';
 import 'homepage.dart';
@@ -108,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     controller: usernameController,
                                     hintText: 'Email address..',
                                     borderSide: BorderSide.none,
-                                    keyboardType: TextInputType.emailAddress,
+                                    keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                                   ),
                                 ),
                               ],
@@ -139,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       controller: passwordController,
                                       hintText: 'Password',
                                       borderSide: BorderSide.none,
-                                      keyboardType: TextInputType.emailAddress,
+                                      keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
                                     )),
                               ],
                             ),
