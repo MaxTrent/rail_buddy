@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           // textTheme: GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme),
           primarySwatch: Colors.blue,
         ),
-        initialRoute: AdminProfilePage.id,
+        initialRoute: LoginScreen.id,
         routes: {
           LoginScreen.id: (context) => LoginScreen(),
           ForgotPassword.id: (context) => ForgotPassword(),

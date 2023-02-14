@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:train_app/screens/admin/admin_profile.dart';
 import 'package:train_app/theme/constraints.dart';
 
+import '../../providers/user_providers.dart';
 import '../../railBuddyButton.dart';
 import '../../railBuddyTextFormField.dart';
 import '../../services/user_services.dart';
@@ -26,7 +27,8 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
   final _minimumDate = DateTime(1930, 1, 1);
   final _maximumDate = DateTime.now();
   final _formKey = GlobalKey<FormState>();
-
+  UserService userService = UserService();
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -74,15 +76,9 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
-                        // Save the updated profile information to your database
-                        // For example, using Firebase:
-                        // FirebaseFirestore.instance.collection('users').doc(user.uid).update({
-                        //   'name': _name,
-                        //   'email': _email,
-                        // });
+                        UserProviders().updateUserAccount(nameController.text, phoneNumberController.text,);
                         Navigator.pop(context);
                       }
-                      
                     },
                     child: const Text(
                       'Save',
@@ -123,7 +119,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(2.0),
-                        child: Text('Name',
+                        child: Text(userService.userModel!.fullName,
                             style:
                                 // GoogleFonts.nunito(
                                 TextStyle(
@@ -141,7 +137,8 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                             controller: nameController,
                             hintText: 'John Rice',
                             borderSide: BorderSide.none,
-                            keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
+                            keyboardType: TextInputType.emailAddress,
+                            fillColor: fColorGrey,
                           )),
                       SizedBox(
                         height: 1.h,
@@ -151,7 +148,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(2.0),
-                            child: Text('Email',
+                            child: Text(userService.userModel!.email,
                                 style:
                                     // GoogleFonts.nunito(
                                     TextStyle(
@@ -168,7 +165,8 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                               controller: emailController,
                               hintText: 'johnrice@gmail.com',
                               borderSide: BorderSide.none,
-                              keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
+                              keyboardType: TextInputType.emailAddress,
+                              fillColor: fColorGrey,
                             ),
                           ),
                         ],
@@ -262,7 +260,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                           Padding(
                             padding: const EdgeInsets.all(2.0),
                             child: Text(
-                              'Phone Number',
+                              userService.userModel!.phoneNumber,
                               style:
                                   // GoogleFonts.nunito(
                                   TextStyle(
@@ -280,7 +278,8 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                                   const TextInputType.numberWithOptions(),
                               controller: phoneNumberController,
                               hintText: '+23490312221246',
-                              borderSide: BorderSide.none, fillColor: fColorGrey,
+                              borderSide: BorderSide.none,
+                              fillColor: fColorGrey,
                             ),
                           ),
                         ],
@@ -310,7 +309,8 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                               controller: cityController,
                               hintText: 'Ikoyi,Lagos',
                               borderSide: BorderSide.none,
-                              keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
+                              keyboardType: TextInputType.emailAddress,
+                              fillColor: fColorGrey,
                             ),
                           ),
                         ],
@@ -340,7 +340,8 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                               controller: cityController,
                               hintText: 'Nigeria',
                               borderSide: BorderSide.none,
-                              keyboardType: TextInputType.emailAddress, fillColor: fColorGrey,
+                              keyboardType: TextInputType.emailAddress,
+                              fillColor: fColorGrey,
                             ),
                           ),
                         ],
@@ -397,7 +398,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
               text: 'Yes',
               onPressed: () {
                 Navigator.of(context).pop();
-                deleteAccount();
+                UserProviders().deleteAccount();
               },
             ),
           ],
