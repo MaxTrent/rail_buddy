@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_app/screens/admin/admin_update_station.dart';
 import 'package:train_app/screens/forgot_password.dart';
@@ -11,9 +12,8 @@ import 'package:train_app/screens/sign_up_screen.dart';
 import 'package:train_app/screens/sign_in_screen.dart';
 
 void main() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

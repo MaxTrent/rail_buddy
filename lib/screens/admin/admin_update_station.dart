@@ -9,7 +9,7 @@ import '../../railBuddyTextFormField.dart';
 import '../../services/user_services.dart';
 
 class AdminUpdateStationScreen extends StatefulWidget {
-  static const String id = 'admin-update-profile';
+  static const String id = 'admin-update-station';
   const AdminUpdateStationScreen({Key? key}) : super(key: key);
 
   @override
@@ -63,7 +63,7 @@ class _AdminUpdateStationScreenState extends State<AdminUpdateStationScreen> {
                   ),
                 ),
                 const Text(
-                  'Update Profile',
+                  'Update Station',
                   style: TextStyle(
                     fontSize: 27,
                     fontWeight: FontWeight.bold,
