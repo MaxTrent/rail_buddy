@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:train_app/services/user_services.dart';
 import 'package:train_app/theme/constraints.dart';
 import 'package:train_app/railBuddyButton.dart';
@@ -29,7 +28,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         body: Stack(
           clipBehavior: Clip.none,
           children: [
-            Image.asset('asset/background.jpg'),
+            Image.asset('assets/images/train_image.png', width: double.infinity,fit : BoxFit.fill),
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
@@ -75,12 +74,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               height: 50.h,
                               width: 300.w,
                               child: RailBuddyTextFormField(
-                                // keyboardType: TextInputType.emailAddress,
-                                controller: emailController,
-                                hintText: 'Password',
-                                borderSide: BorderSide.none,
-                                fillColor: bColorWhite,
+
                                 keyboardType: TextInputType.emailAddress,
+                                controller: emailController,
+                                hintText: 'email address..',
+                                borderSide: BorderSide.none,
+                                fillColor: fColorGrey,
+                                // keyboardType: TextInputType.emailAddress,
                               ),
                             ),
                           ],
@@ -103,9 +103,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                   UserService userService = UserService();
                                   if(await userService
                                       .sendPasswordReset(emailController.text)){
-                                        Fluttertoast.showToast(
-                                          msg: 'Password Reset Failed'
-                                        );
+                                        // Fluttertoast.showToast(
+                                        //   msg: 'Password Reset Failed'
+                                        // );
                                       }
                                 },
                               ),

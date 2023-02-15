@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:train_app/models/user_model.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:train_app/railBuddyButton.dart';
 import 'package:train_app/railBuddyTextFormField.dart';
@@ -24,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   var passwordController = TextEditingController();
   UserService userService = UserService();
   final _formKey = GlobalKey<FormState>();
+  UserModel? userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -97,10 +100,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Text(userService.userModel!.email,
+                                    child: Text('Email',
                                         style:
                                             // GoogleFonts.nunito(
-
                                             TextStyle(
                                           fontSize: 16.sp,
                                           fontWeight: FontWeight.w600,
@@ -111,13 +113,22 @@ class _LoginScreenState extends State<LoginScreen> {
                                   SizedBox(
                                     height: 50.h,
                                     width: 300.w,
-                                    child: RailBuddyTextFormField(
+                                    child: TextFormField(
+
                                       controller: usernameController,
-                                      hintText: 'Email address..',
-                                      borderSide: BorderSide.none,
-                                      keyboardType: TextInputType.emailAddress,
-                                      fillColor: fColorGrey,
-                                    ),
+                                      style: TextStyle(color: Colors.grey),
+                                      decoration: InputDecoration(
+
+                                        filled: true,
+                                        fillColor: Colors.grey[200],
+                                        hintText: 'Enter your text here',
+                                        hintStyle: TextStyle(color: Colors.grey),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide.none,
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                      ),
+                                    )
                                   ),
                                 ],
                               ),
@@ -184,29 +195,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: RailBuddyButton(
                                       text: 'Login',
                                       onPressed: () async {
-                                        bool success = await UserProviders()
-                                            .signInWithEmailAndPassword(
-                                          usernameController.text,
-                                          passwordController.text,
-                                        );
                                         if (_formKey.currentState!.validate()) {
-                                          if (success) {
-                                            Navigator.of(context)
-                                                .pushReplacement(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      HomePage()),
-                                            );
-                                          } else {
-                                            
-                                            const SnackBar(
-                                              content: Text(
-                                                'Sign In failed!',
-                                              ),
-                                            );
-                                            // Fluttertoast.showToast(
-                                            //     msg: 'Sign in Failed!');
-                                          }
+                                          UserProviders().signInWithEmailAndPassword(usernameController.text, passwordController.text,);
+                                          Navigator.pushReplacement(context , MaterialPageRoute(
+                                            builder: (context){
+                                              return HomePage();
+                                            }
+                                          ));
                                         }
                                       },
                                     ),

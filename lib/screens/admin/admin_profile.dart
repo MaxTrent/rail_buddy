@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:train_app/providers/user_providers.dart';
+import 'package:train_app/screens/homepage.dart';
 
+import '../../models/user_model.dart';
 import '../../services/user_services.dart';
 import '../sign_in_screen.dart';
 import 'admin_update_profile_screen.dart';
@@ -15,6 +17,7 @@ class AdminProfilePage extends StatefulWidget {
 
 class _AdminProfilePageState extends State<AdminProfilePage> {
   UserService userService = UserService();
+  UserModel? userModel;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -43,7 +46,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                     onPressed: () {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: ((context) => LoginScreen()),
+                          builder: ((context) => HomePage()),
                         ),
                       );
                     },
@@ -113,16 +116,14 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                     ),
                   ),
                   Text(
-                    userService.userModel!.fullName,
-                    style: TextStyle(
+'FullName',                    style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
                       color: Colors.blue.shade800,
                     ),
                   ),
                   Text(
-                    userService.userModel!.email,
-                    style: TextStyle(
+'Email',                    style: TextStyle(
                       letterSpacing: 0.8,
                       fontSize: 16,
                       fontWeight: FontWeight.w400,

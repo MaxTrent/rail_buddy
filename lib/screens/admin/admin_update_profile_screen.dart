@@ -1,6 +1,7 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:train_app/models/user_model.dart';
 import 'package:train_app/screens/admin/admin_profile.dart';
 import 'package:train_app/theme/constraints.dart';
 
@@ -28,6 +29,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
   final _maximumDate = DateTime.now();
   final _formKey = GlobalKey<FormState>();
   UserService userService = UserService();
+  UserModel? userModel;
   
   @override
   Widget build(BuildContext context) {
@@ -119,7 +121,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(2.0),
-                        child: Text(userService.userModel!.fullName,
+                        child: Text('FullName',
                             style:
                                 // GoogleFonts.nunito(
                                 TextStyle(
@@ -135,7 +137,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                           child: RailBuddyTextFormField(
                             obscure: true,
                             controller: nameController,
-                            hintText: 'John Rice',
+                            hintText: userModel?.fullName ?? '',
                             borderSide: BorderSide.none,
                             keyboardType: TextInputType.emailAddress,
                             fillColor: fColorGrey,
@@ -148,7 +150,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(2.0),
-                            child: Text(userService.userModel!.email,
+                            child: Text('Email',
                                 style:
                                     // GoogleFonts.nunito(
                                     TextStyle(
@@ -163,7 +165,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                             width: 320.w,
                             child: RailBuddyTextFormField(
                               controller: emailController,
-                              hintText: 'johnrice@gmail.com',
+                              hintText: userModel?.email ?? '',
                               borderSide: BorderSide.none,
                               keyboardType: TextInputType.emailAddress,
                               fillColor: fColorGrey,
@@ -260,8 +262,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                           Padding(
                             padding: const EdgeInsets.all(2.0),
                             child: Text(
-                              userService.userModel!.phoneNumber,
-                              style:
+'PhoneNumber',                              style:
                                   // GoogleFonts.nunito(
                                   TextStyle(
                                 fontSize: 16.sp,
@@ -277,7 +278,7 @@ class _AdminUpdateProfileScreenState extends State<AdminUpdateProfileScreen> {
                               keyboardType:
                                   const TextInputType.numberWithOptions(),
                               controller: phoneNumberController,
-                              hintText: '+23490312221246',
+                              hintText: userModel?.phoneNumber ?? '',
                               borderSide: BorderSide.none,
                               fillColor: fColorGrey,
                             ),

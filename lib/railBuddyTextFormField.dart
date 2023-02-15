@@ -22,37 +22,29 @@ class RailBuddyTextFormField extends StatefulWidget {
 }
 
 class _RailBuddyTextFormFieldState extends State<RailBuddyTextFormField> {
+  get obscure => widget.obscure;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-        controller: widget.controller,
-        decoration: InputDecoration(
-          // suffixIcon: suffixIcon,
-          contentPadding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-          //hintText: hintText,
-          fillColor: widget.fillColor,
-          filled: true,
-          hintText: widget.hintText,
-          errorStyle: TextStyle(height: 0, color: Colors.red),
-          hintStyle: TextStyle(
-            fontSize: 16.sp,
-            color: Color(0xFF969A9D),
-            fontWeight: FontWeight.w300,
-          ),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10.r),
-              borderSide: widget.borderSide),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10.r),
-              borderSide: widget.borderSide),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10.r),
-              borderSide: widget.borderSide),
-          errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.r),
-            borderSide: widget.borderSide,
-          ),
+      obscureText: obscure,
+      controller: widget.controller,
+      style: TextStyle(color: Colors.grey),
+      decoration: InputDecoration(
+        fillColor: widget.fillColor,
+        filled: true,
+        hintText: widget.hintText,
+        errorStyle: TextStyle(height: 0, color: Colors.red),
+        hintStyle: TextStyle(
+          fontSize: 16.sp,
+          color: Color(0xFF969A9D),
+          fontWeight: FontWeight.w300,
         ),
-        style: Theme.of(context).textTheme.headline1);
+        border: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+    );
   }
 }

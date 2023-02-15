@@ -12,14 +12,4 @@ class UserModel {
     required this.phoneNumber,
     required this.uuid,
   });
-
-  factory UserModel.fromFirestore(DocumentSnapshot documentSnapshot) {
-    Map data = documentSnapshot.data as Map;
-    return UserModel(
-      fullName: data['fullName'] ?? '',
-      email: data['email'] ?? '',
-      phoneNumber: data['phoneNumber'] ?? '',
-      uuid: documentSnapshot.id,
-    );
-  }
 }

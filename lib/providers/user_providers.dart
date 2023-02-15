@@ -20,17 +20,21 @@ class UserProviders with ChangeNotifier {
 
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
-      UserCredential result = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      User? firebaseUser = result.user;
-      return _userFromFirebaseUser(firebaseUser!);
-    } catch (error) {
-      print(error.toString());
-      return null;
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+    email: email,
+    password: password,
+    );
+
+    } on FirebaseAuthException catch (e) {
+    if (e.code == 'user-not-found') {
+    print('No user found for that email.');
+    } else if (e.code == 'wrong-password') {
+    print('Wrong password provided for that user.');
+    }
     }
   }
 
-  Future signUpWithEmailAndPassword(String email, String password) async {
+  Future signUpWithEmailAndPassword(String email, String password,) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);

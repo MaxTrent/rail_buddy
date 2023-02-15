@@ -3,8 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../models/user_model.dart';
 
 class UserService {
+
   late FirebaseAuth _auth;
-  UserModel? userModel;
+  late UserModel userModel;
   final CollectionReference userCollection =
       FirebaseFirestore.instance.collection('users');
 
@@ -15,6 +16,7 @@ class UserService {
       'phoneNumber': user.phoneNumber,
     });
   }
+
   Future sendPasswordReset(String email) async {
     try {
       await _auth.sendPasswordResetEmail(email: email);

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:train_app/screens/homepage.dart';
 import 'package:train_app/screens/sign_in_screen.dart';
 import 'package:train_app/services/user_services.dart';
 import 'package:train_app/theme/constraints.dart';
 
+import '../models/user_model.dart';
 import '../providers/user_providers.dart';
 import '../railBuddyButton.dart';
 import '../railBuddyTextFormField.dart';
@@ -19,11 +21,12 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController fullnameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   UserService userService = UserService();
   final _formKey = GlobalKey<FormState>();
+  UserModel? userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +100,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Text(userService.userModel!.fullName,
+                                  child: Text(userModel?.fullName ?? '',
                                       style:
                                           // GoogleFonts.nunito(
           
@@ -112,7 +115,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   height: 50.h,
                                   width: 300.w,
                                   child: RailBuddyTextFormField(
-                                    controller: usernameController,
+                                    controller: fullnameController,
                                     hintText: 'FullName',
                                     borderSide: BorderSide.none,
                                     keyboardType: TextInputType.emailAddress,
@@ -129,7 +132,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Text(userService.userModel!.email,
+                                  child: Text(userModel?.email ?? '',
                                       style:
                                           // GoogleFonts.nunito(
                                           TextStyle(
@@ -143,8 +146,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     height: 50.h,
                                     width: 300.w,
                                     child: RailBuddyTextFormField(
-                                      obscure: true,
-                                      controller: passwordController,
+                                      // obscure: true,
+                                      controller: emailController,
                                       hintText: 'Email address ...',
                                       borderSide: BorderSide.none,
                                       keyboardType: TextInputType.emailAddress,
@@ -256,28 +259,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               child: RailBuddyButton(
                                 text: 'Create Account',
                                 onPressed: () async {
-                                  bool success = await UserProviders()
-                                      .signUpWithEmailAndPassword(
-                                    usernameController.text,
-                                    passwordController.text,
-                                  );
                                   if (_formKey.currentState!.validate()) {
-                                    if (success) {
-                                      Navigator.of(context).pushReplacement(
-                                        MaterialPageRoute(
-                                          builder: ((context) =>
-                                              AdminProfilePage()),
-                                        ),
-                                      );
-                                    } else {
-                                      const SnackBar(
-                                        content: Text(
-                                          'Sign up failed!',
-                                        ),
-                                      );
-                                      // Fluttertoast.showToast(
-                                      //     msg: 'Sign in Failed!');
-                                    }
+                                    UserProviders().signUpWithEmailAndPassword(emailController.text, passwordController.text,);
+                                    Navigator.pushReplacement(context , MaterialPageRoute(
+                                        builder: (context){
+                                          return HomePage();
+                                        }
+                                    ));
                                   }
                                 },
                               ),
